@@ -13,9 +13,11 @@ app.use(cors());
 
 // importar rutas
 var appRoutes = require('./routes/app');
+var precios = require('./routes/compare');
 
-
+app.use('/precios', precios);
 app.use('/', appRoutes);
+
 
 var PORT = process.env.PORT || 8080;
 //var PORT = 3000;
