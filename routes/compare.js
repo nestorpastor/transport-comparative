@@ -1,4 +1,4 @@
-var getRoutePricesCabify = require('../cabify/routes')
+
 var routeHandler = require('../handler/index')
 // Requires
 var express = require('express');
@@ -9,21 +9,16 @@ var app = express();
 
 // Rutas
 app.get('/GetPreciosRuta/:lati/:loni/:latf/:lonf', async (req, res, next) => {
-  // let a = await getRoutePricesCabify();
 
-  // let res = [
-  //   {
-  //     app:'uber',
-  //     fee:123
+  var latInicial = req.params.lati;
+  var lonInicial = req.params.loni;
+  var latFinal = req.params.latf;
+  var lonFinal = req.params.lonf;
 
-  //   },
-  //   {
-  //   }
-  // ]
+  from = [Number(latInicial), Number(lonInicial)];
+  to = [Number(latFinal), Number(lonFinal)];
 
-  from = [,]
-  to = [,]
-  let data = routeHandler(from, to);
+  let data = await routeHandler(from, to);
 
   res.status(200).json({
     ok: true,
